@@ -16,7 +16,8 @@ namespace NasaPet
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddServices();
+            var connectionString = builder.Configuration["ConnectionStrings:SQLiteDefault"];
+            builder.Services.AddServices(connectionString);
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

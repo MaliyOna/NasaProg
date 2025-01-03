@@ -4,8 +4,8 @@ namespace NasaPet.DependencyInjection;
 
 public static class DI
 {
-    public static void AddServices(this IServiceCollection services)
+    public static void AddServices(this IServiceCollection services, string connectionString)
     {
-        services.AddDALServices();
+        services.AddDALServices(connectionString);
     }
 }
