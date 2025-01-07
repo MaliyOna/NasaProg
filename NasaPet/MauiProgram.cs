@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using NasaPet.DependencyInjection;
 
 namespace NasaPet
@@ -16,7 +17,9 @@ namespace NasaPet
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            var connectionString = builder.Configuration["ConnectionStrings:SQLiteDefault"];
+            builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            var connectionString = builder.Configuration["ConnectionStrings:Default"];
             builder.Services.AddServices(connectionString);
 #if DEBUG
             builder.Logging.AddDebug();

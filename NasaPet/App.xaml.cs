@@ -9,7 +9,15 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            try
+            {
+                return new Window(new AppShell());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при создании окна: {ex.Message}");
+                throw;
+            }
         }
     }
 }
