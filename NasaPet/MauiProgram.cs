@@ -5,6 +5,8 @@ namespace NasaPet
 {
     public static class MauiProgram
     {
+        private const string _connectionString = "Data Source=LocalDatabase.db";
+
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -16,7 +18,7 @@ namespace NasaPet
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddServices();
+            builder.Services.AddServices(_connectionString);
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

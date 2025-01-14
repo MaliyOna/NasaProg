@@ -1,5 +1,11 @@
-﻿namespace NasaPet.DAL;
+﻿using Microsoft.EntityFrameworkCore;
 
-public class ApplicationDBContext
+namespace NasaPet.DAL;
+
+public class ApplicationDbContext : DbContext
 {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+    {
+    }
 }
