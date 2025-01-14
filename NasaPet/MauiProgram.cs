@@ -1,11 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NasaPet.DependencyInjection;
 
 namespace NasaPet
 {
     public static class MauiProgram
     {
+        private const string _connectionString = "Data Source=LocalDatabase.db";
+
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -17,10 +18,7 @@ namespace NasaPet
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-            var connectionString = builder.Configuration["ConnectionStrings:Default"];
-            builder.Services.AddServices(connectionString);
+            builder.Services.AddServices(_connectionString);
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
