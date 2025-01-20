@@ -8,6 +8,13 @@
     Shell.FlyoutBehavior="Flyout"
     Title="NasaPet">
 
+    <TabBar>
+        <ShellContent Title="Home"
+                      ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Title="News"
+                      ContentTemplate="{DataTemplate views:NewsPage}" />
+    </TabBar>
+
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}" />
