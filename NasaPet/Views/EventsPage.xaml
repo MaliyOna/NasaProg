@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="using:NasaPet.Views"
+             x:Class="NasaPet.Views.EventsPage"
+             Title="Events">
+    <Grid Padding="10">
+        <ScrollView Padding="10">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="{Binding SelectedNews.Title}"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+                <Label Text="{Binding SelectedNews.Description}"
+                   FontSize="Medium" 
+                   LineBreakMode="WordWrap" />
+
+                <Label Text="Категории:" FontAttributes="Bold" FontSize="Medium" />
+                <CollectionView ItemsSource="{Binding SelectedNews.Categories}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Title}" 
+                               FontSize="Small"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Источники:" FontAttributes="Bold" FontSize="Medium"/>
+                <CollectionView ItemsSource="{Binding SelectedNews.Sources}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding Url}" 
+                               FontSize="Small"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label Text="Геометрия:" FontAttributes="Bold" FontSize="Medium"/>
+                <CollectionView ItemsSource="{Binding SelectedNews.Geometries}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="{Binding Date, StringFormat='Дата: {0:yyyy-MM-dd HH:mm}'}" />
+                                <Label Text="{Binding Type, StringFormat='Тип: {0}'}" />
+                                <Label Text="{Binding CoordinatesString, StringFormat='Координаты: {0}'}" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
